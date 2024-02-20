@@ -1,4 +1,5 @@
 import {Routes , Route} from 'react-router-dom'
+
 import Layout from './components/Layout'
 import Public from './components/Public'
 import Login from  './features/auth/Login'
@@ -12,6 +13,8 @@ import NewUserForm from './features/users/NewUserForm';
 import EditNote from './features/notes/EditNote';
 import NewNote from './features/notes/NewNote';
 import Prefetch from './features/auth/Prefetch';
+import PersistLogin from './features/auth/PersistLogin';
+
 
 function App() {
   return ( 
@@ -19,6 +22,7 @@ function App() {
       <Route path= "/" element={<Layout />}>
         <Route index element = {<Public />} />
         <Route path= "login" element={<Login />}/>
+        <Route element={<PersistLogin />}>
          <Route element={<Prefetch />}>
         <Route path="dash" element= {<DashLayout/>} >
 
@@ -39,6 +43,7 @@ function App() {
           </Route> 
 
          </Route> {/* End Dash */}
+         </Route>
          </Route>
       </Route>
     </Routes>
