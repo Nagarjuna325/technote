@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom'
-
-import { useSelector } from 'react-redux'
-import { selectUserById } from './usersApiSlice'
+import { useGetUsersQuery} from './usersApiSlice'
+import {memo} from 'react'
+// import { useSelector } from 'react-redux'
+// import { selectUserById } from './usersApiSlice'
 
 const User = ({ userId }) => {
     const user = useSelector(state => selectUserById(state, userId))
@@ -34,4 +35,7 @@ const User = ({ userId }) => {
 
     } else return null
 }
-export default User
+const memoizedUser = memo(User)
+
+
+export default memoizedUser
