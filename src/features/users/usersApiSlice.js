@@ -10,14 +10,13 @@ const initialState = usersAdapter.getInitialState()
 
 export const usersApiSlice = apiSlice.injectEndpoints({
     endpoints: builder => ({
-        getUsers: builder.query({  
+        getUsers: builder.query({
             query: () => ({
-                url:'/users',
+                url: '/users',
                 validateStatus: (response, result) => {
-                return response.status === 200 && !result.isError
-              },
+                    return response.status === 200 && !result.isError
+                },
             }),
-            // keepUnusedDataFor: 5,
             transformResponse: responseData => {
                 const loadedUsers = responseData.map(user => {
                     user.id = user._id
@@ -80,6 +79,7 @@ export const {
 
 // returns the query result object
 export const selectUsersResult = usersApiSlice.endpoints.getUsers.select()
+
 // creates memoized selector
 const selectUsersData = createSelector(
     selectUsersResult,
