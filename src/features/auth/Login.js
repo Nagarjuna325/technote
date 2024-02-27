@@ -159,7 +159,12 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
+            // console.log('this is something');
+            // console.log(username);
+            // console.log(password);
             const { accessToken } = await login({ username, password }).unwrap()
+            // console.log('this is something2');
+            // console.log( accessToken);
             dispatch(setCredentials({ accessToken }))
             setUsername('')
             setPassword('')
